@@ -3,13 +3,15 @@ package com.tokimahery.rmz;
 import java.util.List;
 import java.util.Objects;
 
-public class Park extends Place {
+public class Park extends Place implements Reviewable {
     private List<Hotel> nearbyHotels;
+    private List<Review> reviews;
 
-    public Park(String name, double latitude, double longitude, String description, List<Review> placeReviews,
+    public Park(String name, double latitude, double longitude, String description, List<Review> reviews,
                 List<Hotel> nearbyHotels) {
-        super(name, latitude, longitude, description, placeReviews);
+        super(name, latitude, longitude, description);
         this.nearbyHotels = nearbyHotels;
+        this.reviews = reviews;
     }
 
     public List<Hotel> getNearbyHotels() {
@@ -18,6 +20,20 @@ public class Park extends Place {
 
     public void setNearbyHotels(List<Hotel> nearbyHotels) {
         this.nearbyHotels = nearbyHotels;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    @Override
+    public List<Review> getReviews() {
+        return this.reviews;
+    }
+
+    @Override
+    public void addReview(Review toAdd) {
+        this.reviews.add(toAdd);
     }
 
     @Override
